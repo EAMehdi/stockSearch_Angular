@@ -1,0 +1,54 @@
+<p>Look for a stock in a Alpha Advantage Database</p>
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="suggestionList()"
+
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <input
+      type="date"
+      class="form-control"
+      placeholder="Date"
+      [(ngModel)]="date_start"
+    />
+  </div>
+  </div>
+
+
+<div class="col-md-6">
+  <h4>Recommendation List :</h4>
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      *ngFor="let result of listResult; let i = index"
+      [class.active]="i == currentIndex">
+      <b>{{ result["1. symbol"] }} </b>
+      <br> {{ result["2. name"] + " - " + result["8. currency"]}}
+      <a
+        class="badge badge-secondary"
+        [routerLink]="['/stock/',result['1. symbol'], date_start]"
+        (click)="setActiveStock(result,i)"
+      >
+        Get Info
+      </a>
+    </li>
+  </ul>
+
+</div>
+
