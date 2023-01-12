@@ -15,12 +15,17 @@ export class StockSearchComponent implements OnInit{
   //currentTutorial:  = {};
   currentStock?: ResultMatch;
   currentIndex = -1;
+  day_before: number ;
   title = '';
   date_start='';
   @Output() date_start_sent = new EventEmitter<any>();
 
 
   constructor(private stockService: StockService) {
+    const d = new Date();
+    this.day_before = d.setDate(d.getDate()-2);
+    console.log(d.setDate(d.getDate()-2));
+
   }
 
   ngOnInit() {

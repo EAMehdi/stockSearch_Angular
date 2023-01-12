@@ -11,17 +11,17 @@ import {BestMatch} from "../models/best-match.model";
 
 export class StockService {
 
+  apiKey="ASZB8S2555BX2X9H"
+
   constructor(private http: HttpClient) { }
 
   getSuggestions(term: string): Observable<BestMatch>{
-    const apiKey = '72W5BK5R5QKEZ9VS';
-    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${term}&apikey=${apiKey}`;
+    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${term}&apikey=${this.apiKey}`;
     return this.http.get<BestMatch>(url);
   }
 
   getStockInfo(stock_id: string, date_s: string): Observable<any>{
-    const apiKey = '72W5BK5R5QKEZ9VS';
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock_id}&apikey=${apiKey}`;
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock_id}&apikey=${this.apiKey}`;
     console.log(url)
     return this.http.get<any>(url);
   }

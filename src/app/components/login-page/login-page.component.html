@@ -1,1 +1,23 @@
-<p>Login page (enter your name) :</p>
+
+
+<div class="col-8">
+  <h4>Username change :</h4>
+  <p>(default: Anonymous)</p>
+  <input
+  type="text"
+  class="form-control"
+  placeholder="Type here"
+  [(ngModel)]="typedUsername"
+/>
+<div class="input-group-append">
+  <button
+    class="btn btn-outline-primary"
+    type="button"
+    [routerLink]="['/stock-search/']"
+    (click)="saveUsername()"
+
+  >
+    Save
+  </button>
+</div>
+</div>
